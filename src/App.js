@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import { Button } from "react-bootstrap";
+import { observer } from "mobx-react-lite";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
 
-export default App;
+
+
+
+const Counter = observer(props => (
+  <section>
+    
+      {props.appstate.count}
+      <div>
+        <Button className="btn-primary" onClick={props.appstate.incCount}>
+          Increment
+        </Button>
+        <Button className="btn-danger" onClick={props.appstate.decCount}>
+          Decrement
+        </Button>
+
+        <div>  Count By Four{props.appstate.countByFour}
+         
+        </div>
+        <div>{props.appstate.countByEight}
+       
+        </div>
+      </div>
+    
+  </section>
+  
+));
+
+export default Counter;
